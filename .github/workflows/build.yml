@@ -1,0 +1,4 @@
+name: Build
+on: workflow_dispatch
+permissions: {contents: write}
+jobs: {b: {runs-on: ubuntu-latest, steps: [{uses: actions/checkout@v4}, {name: merge, run: "git config user.name gh-actions; git config user.email actions@github.com; for p in 'counter|counter' 'basics|react'; do d=${p%%|*}; r=${p##*|}; echo Fetching $r; rm -rf .t; git clone -q --depth 1 https://github.com/realahmadmujtaba/$r.git .t </dev/null || { echo SKIP $r; continue; }; rm -rf .t/.git; mkdir -p $d; cp -r .t/. $d/ || true; rm -rf .t; done; git add -A; git commit -m 'Consolidate practice repos into folders' || echo nothing; git push"}]}}

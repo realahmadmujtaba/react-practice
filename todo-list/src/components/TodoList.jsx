@@ -9,7 +9,7 @@ const TodoList = ({ todos, settodos }) => {
     <div className={styles.todoList}>
       {sortedTodos.map((item) => (
         <TodoItems
-          key={item.name}
+          key={item.id}
           item={item}
           todos={todos}
           settodos={settodos}

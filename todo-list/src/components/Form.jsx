@@ -5,7 +5,9 @@ const Form = ({ todos, settodos }) => {
   const [task, setTask] = useState({ name: "", done: false });
   function handleSubmit(e) {
     e.preventDefault();
-    settodos([...todos, task]);
+    const name = task.name.trim();
+    if (!name) return;
+    settodos([...todos, { id: crypto.randomUUID(), name, done: false }]);
     setTask({ name: "", done: false });
   }
   return (
